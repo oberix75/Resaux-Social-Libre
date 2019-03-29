@@ -1,0 +1,37 @@
+<li>
+    <a href="#" title="" class="not-box-open">
+        <span><img src="{{ asset('build/images/icon7.png') }}" alt=""></span>
+        {{ 'menu.notifications.main'|trans }}
+    </a>
+    <div class="notification-box">
+        {% if notifications|length > 0 %}
+            <div class="nt-title">
+                {#<h4>{{ 'global.settings'|trans }}</h4>#}
+                <a href="#" data-user="{{ user_id }}" title="">{{ 'global.clear_all'|trans }}</a>
+            </div>
+        {% endif %}
+        <div class="nott-list">
+            <div id="nott-items">
+                {% for notification in notifications %}
+                    <div class="notfication-details">
+                        <div class="noty-user-img">
+                            {% if notification.userSender.getUserProfilePictures().last() %}
+                                <img src="{{ asset('/uploads/user/profiles/'~ notification.userSender.getUserProfilePictures().last().document)|imagine_filter('user_profile_small') }}" alt="">
+                            {% else %}
+                                <img src="http://via.placeholder.com/40x40" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="notification-info">
+                            <h3><a href="{{ notification.link  }}" title="">{{ notification.userSender.username }}</a> {{ notification.content }}</h3>
+                            <span>{{ notification.createdAt|ago }}</span>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="view-all-nots">
+                <a href="#" title="">{{ 'menu.notifications.view_all'|trans }}</a>
+            </div>
+        </div>
+    </div>
+</li>

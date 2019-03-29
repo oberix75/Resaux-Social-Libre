@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RSL | Free social network!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('video') }}
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper">
+        {% include 'header.html.twig' %}
+
+        <main>
+            <div class="main-section">
+                <div class="container">
+                    <div class="main-section-data">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                                {% include 'sidebar/left-sidebar.html.twig' %}
+                            </div>
+                            <div class="col-lg-6 col-md-8 no-pd">
+                                <div class="main-ws-sec">
+                                    {% include '/home/block/post-top-bar.html.twig' %}
+                                    <div class="posts-section">
+                                        {% include 'home/block/post-bar.html.twig' %}
+                                        {% include 'home/block/nav.html.twig' %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 pd-right-none no-pd">
+                                {{ include('sidebar/right-sidebar.html.twig') }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('video') }}
+{% endblock %}
